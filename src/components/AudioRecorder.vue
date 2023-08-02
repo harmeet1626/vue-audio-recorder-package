@@ -31,7 +31,7 @@ export default {
             isRecording: false,
             mediaRecorder: null,
             chunks: [],
-            streamVar:null
+            streamVar: null
         };
     },
     props: ['settings'],

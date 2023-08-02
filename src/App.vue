@@ -11,8 +11,9 @@ export default {
       settings: {
         startButtonName: 'Start Button',
         stopButtonName: 'Stop Button',
-        startButtonColor:'#116197',
-        stopButtonColor:'red'
+        startButtonColor: '#116197',
+        stopButtonColor: 'red',
+        DownloadAudio: true
       },
       recordings: []
     }

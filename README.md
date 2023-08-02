@@ -5,7 +5,9 @@
 we can simply import the component and register it inside components object and use it on template as below:-
 	
 ### Import :-
-   ```import audioRecorderListDisplay from 'audio-Recorder-List-Display'```
+```
+   import audioRecorderListDisplay from 'vue-audio-recorder-list'
+```
    
 ### Register:-
 ```
@@ -62,3 +64,12 @@ data(){
     }
 }
 ```
+
+### To add download button you can pass the download button settings as props :-
+
+```
+settings:{
+    DownloadAudio: true
+}
+```
+### if DownloadAudio is true then download button will appear.
