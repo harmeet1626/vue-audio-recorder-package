@@ -1,11 +1,31 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <audioRecorderListDisplay :settings="settings" @get-recordings="getRecordings" />
+  </div>
 </template>
-
+<script>
+import audioRecorderListDisplay from './views/AudioRecorderListDisplay.vue'
+export default {
+  data() {
+    return {
+      settings: {
+        startButtonName: 'Start Button',
+        stopButtonName: 'Stop Button',
+      },
+      recordings: []
+    }
+  },
+  components: {
+    audioRecorderListDisplay
+  },
+  methods: {
+    getRecordings(rec) {
+      console.log(rec, 'test')
+      this.recordings = rec
+    },
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

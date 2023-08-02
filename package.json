@@ -1,10 +1,11 @@
 {
-  "name": "npm_audio_recorder",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vue-audio-recorder-list",
+  "version": "0.1.25",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-library": "vue-cli-service build --target lib --name vue-audio-recorder-list ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -43,5 +44,17 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "./src/index.js",
+  "keywords": [
+    "recorder",
+    "display recording on front end",
+    "play displayed recordings"
+  ],
+  "usage": [
+    "import audioRecorderListDisplay from 'audioRecorderListDisplay' and use as component"
+  ],
+  "author": "Harmeet Singh",
+  "license": "ISC"
 }
