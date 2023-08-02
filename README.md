@@ -66,10 +66,10 @@ data(){
 ```
 
 ### To add download button you can pass the download button settings as props :-
+### if DownloadAudio is true then download button will appear.
 
 ```
 settings:{
     DownloadAudio: true
 }
 ```
-### if DownloadAudio is true then download button will appear.
