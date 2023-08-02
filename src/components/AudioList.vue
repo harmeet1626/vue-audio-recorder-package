@@ -4,11 +4,7 @@
             <div class='grid-item' style="display: flex;  margin: auto;  width: 30%;   padding: 10px;">
                 <audio :src="audio.url" controls></audio>
                 <button class="Download-button" v-show="DownloadAudio" @click="downloadBlobAudio(audio.url, 'downloaded_audio.mp3')">
-                    <div style="display: flex;">
-                         <!-- Download&nbsp; -->
-                    <img 
-                    style="height: 19px;" :src="downloadIcon" />
-                </div>
+                    <img style="width: 15px;" :src="downloadIcon" />
                 </button>
                 <button class="close" @click="removeAudio(index)">X</button>
             </div>
@@ -56,30 +52,17 @@ export default {
 .close {
     width: 30px;
     height: 30px;
-    /* text-align: center; */
-    /* line-height: 30px; */
-    /* cursor: pointer; */
-    /* background-color: #ff2a1b; */
-    /* color: rgb(0, 0, 0); */
-    /* font-size: 24px; */
-    /* border-radius: 100%; */
-    border: 5px;
-
-
-}
-
-.close:hover {
-    border-radius: 100%;
-    border: revert;
+    border-radius: 50%;
+    border: navajowhite;
+    margin-left: 5px;
+    cursor: pointer;
 }
 .Download-button {
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    /* height: 10%; */
-    /* cursor: pointer; */
+    width: 30px;
+    height: 30px;
+    border: navajowhite;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 5px;
 }
 </style>
