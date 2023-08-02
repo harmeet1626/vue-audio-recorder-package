@@ -8,7 +8,7 @@
             </div>
         </button>
         <div v-else>
-            <img class="gif" src="https://makeitcenter.adobe.com/content/dam/edu-hub-assets/blog2/78_04_article.gif"> <br>
+            <img class="gif" :src="soundGraph"> <br>
             <button :style="{ backgroundColor: settings.stopButtonColor ? settings.stopButtonColor : 'red' }"
                 class="stop-recording-button" @click="stopRecording">
                 <div style="display: flex;">
@@ -23,11 +23,13 @@
 <script>
 import startButtonIcon from '../assets/StartButton.png'
 import stopButtonIcon from '../assets/StopButton.png'
+import soundGraph from '../assets/soundGraph.gif'
 export default {
     data() {
         return {
             startButtonIcon: startButtonIcon,
             stopButtonIcon: stopButtonIcon,
+            soundGraph: soundGraph,
             isRecording: false,
             mediaRecorder: null,
             chunks: [],
