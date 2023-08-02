@@ -25,8 +25,8 @@ Only one props object has to be passed named “settings” and inside that obje
 data(){
     return{
         settings:{
-            startButtonName:"Your button name",
-            stopButtonName:"YourButtonName"
+            startButtonName:"START_BUTTON_LABEL",
+            stopButtonName:"STOP_BUTTON_LABEL"
         }
     }
 }
@@ -34,19 +34,31 @@ data(){
 And pass that props object like this :- 
 
 ```
- <audioRecorderListDisplay :settings=”settings”/>
+ <audioRecorderListDisplay :settings="settings"/>
 ```
 ### To get the list of recorded audios we have to add event on the component as below :- 
 ```
- <audioRecorderListDisplay  @get-recordings=”getRecordings”/>
+ <audioRecorderListDisplay  @get-recordings="getRecordings"/>
 ```
 Then, create function inside methods to access the recordings in your component as below :- 
 ```
-Methods:{
+methods:{
     getRecordings(rec){
-        console.log(res, 'array of recorings will be printed here and you can use it')
+        console.log(rec, 'array of recorings will be printed here and you can use it')
     }
 }
 ```
+### To add colors in buttons as per your choices then you can pass the color of both start and stop buttons like below:-
 
-# vue-audio-recorder-package
+```
+data(){
+    return{
+        settings:{
+            startButtonName:"START_BUTTON_LABEL",
+            stopButtonName:"STOP_BUTTON_LABEL",
+            startButtonColor:"START_BUTTON_COLOR",
+            stopButtonColor:"STOP_BUTTON_COLOR"
+        }
+    }
+}
+```

@@ -1,30 +1,47 @@
 <template>
     <div>
-        <button class="start-recording-button" @click="startRecording" v-if="!isRecording">
-            {{ settings ? settings.startButtonName : 'please enter button name' }}
+        <button :style="{ backgroundColor: settings.startButtonColor ? settings.startButtonColor : 'blue' }"
+            class="start-recording-button" @click="startRecording" v-if="!isRecording">
+            <div style="display: flex;">
+                <img class="startButtonicon" :src="startButtonIcon" /> &nbsp;
+                {{ settings ? settings.startButtonName : 'Start' }}
+            </div>
         </button>
-        <button class="stop-recording-button" @click="stopRecording" v-else>
-            {{ settings ? settings.stopButtonName : 'please enter button name' }}
-        </button>
+        <div v-else>
+            <img class="gif" src="https://makeitcenter.adobe.com/content/dam/edu-hub-assets/blog2/78_04_article.gif"> <br>
+            <button :style="{ backgroundColor: settings.stopButtonColor ? settings.stopButtonColor : 'red' }"
+                class="stop-recording-button" @click="stopRecording">
+                <div style="display: flex;">
+                    <img class="stopButtonicon" :src="stopButtonIcon" /> &nbsp;
+                    {{ settings ? settings.stopButtonName : 'Stop' }}
+                </div>
+            </button>
+        </div>
     </div>
 </template>
   
 <script>
+import startButtonIcon from '../assets/StartButton.png'
+import stopButtonIcon from '../assets/StopButton.png'
 export default {
     data() {
         return {
+            startButtonIcon: startButtonIcon,
+            stopButtonIcon: stopButtonIcon,
             isRecording: false,
             mediaRecorder: null,
             chunks: [],
+            streamVar:null
         };
     },
-    props: ['settings'],    
+    props: ['settings'],
     methods: {
         startRecording() {
             this.chunks = [];
             navigator.mediaDevices
                 .getUserMedia({ audio: true })
                 .then((stream) => {
+                    this.streamVar = stream
                     this.mediaRecorder = new MediaRecorder(stream);
                     this.mediaRecorder.ondataavailable = (e) => {
                         if (e.data.size > 0) {
@@ -46,6 +63,10 @@ export default {
         },
         stopRecording() {
             this.mediaRecorder.stop();
+            const tracks = this.streamVar.getTracks();
+            tracks.forEach(track => {
+                track.stop()
+            })
             this.isRecording = false;
         },
     },
@@ -54,7 +75,7 @@ export default {
 <style scoped>
 .start-recording-button {
     padding: 10px 20px;
-    background-color: #3498db;
+    /* background-color: #3498db; */
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -64,11 +85,24 @@ export default {
 
 .stop-recording-button {
     padding: 10px 20px;
-    background-color: #db3434;
+    /* background-color: #db3434; */
     color: #ffffff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+}
+
+.gif {
+    height: 60px;
+    width: 30%;
+}
+
+.startButtonicon {
+    height: 19px;
+}
+
+.stopButtonicon {
+    height: 19px;
 }
 </style>

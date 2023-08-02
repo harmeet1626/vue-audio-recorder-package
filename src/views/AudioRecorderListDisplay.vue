@@ -2,10 +2,10 @@
     <div>
         <AudioRecorder :settings="settings" @audio-recorded="addAudio" />
         <AudioList :audioList="audioList" @remove-audio="removeAudio" /><br>
-        <button class="get-output-button" @click="getOutput">Get output</button>
+        <button v-show="audioList.length > 0" class="get-output-button" @click="getOutput">Get output</button>
     </div>
 </template>
-  
+
 <script>
 import AudioRecorder from "../components/AudioRecorder.vue";
 import AudioList from "../components/AudioList.vue";
@@ -22,7 +22,6 @@ export default {
         };
     },
     props: ['settings'],
-    emit:['get-recordings'],
     methods: {
         addAudio(audioBlob) {
             const audioURL = URL.createObjectURL(audioBlob);
@@ -32,7 +31,6 @@ export default {
             this.audioList.splice(i, 1)
         },
         getOutput() {
-            console.log('recording emitted')
             this.$emit('get-recordings', this.audioList)
         }
     },

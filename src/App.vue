@@ -11,6 +11,8 @@ export default {
       settings: {
         startButtonName: 'Start Button',
         stopButtonName: 'Stop Button',
+        startButtonColor:'#116197',
+        stopButtonColor:'red'
       },
       recordings: []
     }
@@ -20,7 +22,6 @@ export default {
   },
   methods: {
     getRecordings(rec) {
-      console.log(rec, 'test')
       this.recordings = rec
     },
   }
