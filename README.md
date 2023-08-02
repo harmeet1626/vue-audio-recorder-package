@@ -49,3 +49,4 @@ Methods:{
 }
 ```
 
+# vue-audio-recorder-package
