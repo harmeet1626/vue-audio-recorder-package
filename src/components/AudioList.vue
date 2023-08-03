@@ -3,7 +3,8 @@
         <div v-for="(audio, index) in audioList" :key="index">
             <div class='grid-item' style="display: flex;  margin: auto;  width: 30%;   padding: 10px;">
                 <audio :src="audio.url" controls></audio>
-                <button class="Download-button" v-show="DownloadAudio" @click="downloadBlobAudio(audio.url, 'downloaded_audio.mp3')">
+                <button class="Download-button" v-show="DownloadAudio"
+                    @click="downloadBlobAudio(audio.url, 'downloaded_audio.mp3')">
                     <img style="width: 15px;" :src="downloadIcon" />
                 </button>
                 <button class="close" @click="removeAudio(index)">X</button>
@@ -25,8 +26,8 @@ export default {
             type: Array,
             default: () => [],
         },
-        DownloadAudio:{
-            type:Boolean
+        DownloadAudio: {
+            type: Boolean
         }
     },
     methods: {
@@ -57,6 +58,7 @@ export default {
     margin-left: 5px;
     cursor: pointer;
 }
+
 .Download-button {
     width: 30px;
     height: 30px;

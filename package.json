@@ -1,6 +1,6 @@
 {
   "name": "vue-audio-recorder-list",
-  "version": "0.1.25",
+  "version": "0.1.29",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
