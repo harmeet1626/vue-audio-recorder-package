@@ -1,9 +1,5 @@
 
-# vue-audio-recorder-list
-
-This plugin will record audio and display the list of recorded audios. It contains extra features like downloading audio, custom button names, custom button colors, custom button icons and also returns all the recorded audios in an array so that we can use it as per our requirement.
-
-## Getting started
+### Tips to use the package as per our convenience
 
 ### Install dependencies
 

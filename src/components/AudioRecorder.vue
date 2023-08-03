@@ -3,14 +3,14 @@
         <button :style="{ backgroundColor: sBgColor, color: sTxtColor }" class="start-recording-button"
             @click="startRecording" v-if="!isRecording">
             <div style="display: flex;">
-                <span class="button-icon" :style="{ 'background-image': `url(${getImgUrl(sBtnIcon)})` }"></span>
+                <span class="button-icon" :style="{'background-image': `url(${getImgUrl(sBtnIcon)})`}"></span>
                 {{ sText }}
             </div>
         </button>
         <button v-if="isRecording" :style="{ backgroundColor: spBgColor, color: spTxtColor }" class="stop-recording-button"
             @click="stopRecording">
             <div style="display: flex;">
-                <span class="button-icon" :style="{ 'background-image': `url(${getImgUrl(spBtnIcon)})` }"></span>
+                <span class="button-icon" :style="{'background-image': `url(${getImgUrl(spBtnIcon)})`}"></span>
                 {{ spText }}
             </div>
         </button>
@@ -47,14 +47,20 @@ export default {
             sBgColor: this.settings.startButtonBgColor || 'blue',
             spTxtColor: this.settings.stopButtonTextColor || 'white',
             spBgColor: this.settings.stopButtonBgColor || 'red',
-            sBtnIcon: this.settings.startButtonIcon || '/startButton.png',
-            spBtnIcon: this.settings.stopButtonIcon || '/stopButton.png',
+            sBtnIcon: this.getImgUrl(this.settings.startButtonIcon, 'start'),
+            spBtnIcon: this.getImgUrl(this.settings.stopButtonIcon, 'stop'),
         };
     },
     props: ['settings'],
     methods: {
-        getImgUrl(pic) {
-            return pic
+        getImgUrl(pic, type) {
+            console.log(pic)
+            if(pic) return pic;
+
+            if(type == 'start')
+                return require('../assets/startButton.png')
+            else 
+            return require('../assets/stopButton.png')
         },
         startRecording() {
             this.chunks = [];

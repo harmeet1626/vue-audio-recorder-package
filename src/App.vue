@@ -10,11 +10,9 @@ export default {
     return {
       settings: {
         startButtonName: 'Start Button',
-        startButtonIcon: '/startButton.png',
         startButtonBgColor: '#116197',
         startButtonTextColor: '#000',
         stopButtonName: 'Stop Button',
-        stopButtonIcon: '/stopButton.png',
         stopButtonBgColor: 'red',
         stopButtonTextColor: '#000',
         DownloadAudio: true
