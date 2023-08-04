@@ -30,7 +30,9 @@
                 </div>
             </div>
         </div>
-
+        <div class="stopwatch">
+            <div class="time">{{ formatTime }}</div>
+        </div>
     </div>
 </template>
   
@@ -50,9 +52,26 @@ export default {
             spBgColor: this.settings.stopButtonBgColor || 'red',
             sBtnIcon: this.getImgUrl(this.settings.startButtonIcon, 'start'),
             spBtnIcon: this.getImgUrl(this.settings.stopButtonIcon, 'stop'),
+            isRunning: false,
+            startTime: null,
+            elapsedTime: 0,
+            autoStopTime: this.settings.recordingMaxLimit || 2
         };
     },
     props: ['settings'],
+    computed: {
+        formatTime() {
+            const seconds = Math.floor(this.elapsedTime / 1000);
+            const minutes = Math.floor(seconds / 60);
+            if (minutes == this.autoStopTime) {
+                this.stopRecording()
+            }
+            console.log(minutes)
+            const hours = Math.floor(minutes / 60);
+
+            return `${String(hours).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}.${String(this.elapsedTime % 1000).padStart(3, '0')}`;
+        },
+    },
     methods: {
         getImgUrl(pic, type) {
             console.log(pic)
@@ -64,6 +83,8 @@ export default {
                 return require('../assets/stopButton.png')
         },
         startRecording() {
+            this.reset()
+            this.startStop()
             this.chunks = [];
             navigator.mediaDevices
                 .getUserMedia({ audio: true })
@@ -91,12 +112,32 @@ export default {
                 });
         },
         stopRecording() {
+            this.startStop()
             this.mediaRecorder.stop();
             const tracks = this.streamVar.getTracks();
             tracks.forEach(track => {
                 track.stop()
             })
             this.isRecording = false;
+        },
+        startStop() {
+            if (this.isRunning) {
+                // Stop the stopwatch
+                clearInterval(this.timer);
+                this.isRunning = false;
+            } else {
+                // Start the stopwatch
+                this.startTime = Date.now() - this.elapsedTime;
+                this.timer = setInterval(() => {
+                    this.elapsedTime = Date.now() - this.startTime;
+                }, 10);
+                this.isRunning = true;
+            }
+        },
+        reset() {
+            if (!this.isRunning) {
+                this.elapsedTime = 0;
+            }
         },
     },
 };
@@ -163,5 +204,25 @@ export default {
     100% {
         box-shadow: 0 0 0 0 rgba(255, 0, 64, 0), 0 0 0 30px rgba(255, 0, 64, 0);
     }
+}
+
+.stopwatch {
+    text-align: center;
+}
+
+.time {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 </style>

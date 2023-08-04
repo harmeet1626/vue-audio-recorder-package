@@ -15,7 +15,8 @@ export default {
         stopButtonName: 'Stop Button',
         stopButtonBgColor: 'red',
         stopButtonTextColor: '#000',
-        DownloadAudio: true
+        DownloadAudio: true,
+        recordingMaxLimit:1
       },
       recordings: []
     }
