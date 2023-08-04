@@ -1,20 +1,3 @@
-// import audioRecorderListDisplay from "./views/AudioRecorderListDisplay.vue"
-// const Recorder = {
-//  install(Vue, options) {
-//   // Let's register our component globally
-//   // https://vuejs.org/v2/guide/components-registration.html
-//   Vue.component("AudioRecorderListDisplay", audioRecorderListDisplay);
-//  }
-// };
-
-// // Automatic installation if Vue has been added to the global scope.
-// if (typeof window !== 'undefined' && window.Vue) {
-//     window.Vue.use(Recorder);
-// }
-
-// export default Recorder;
-
-// import VueElegantButton from "./components/VueElegantButton.vue";
 import audioRecorderListDisplay from "./views/AudioRecorderListDisplay.vue"
 
 function install(Vue) {

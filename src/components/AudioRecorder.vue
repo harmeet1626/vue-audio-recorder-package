@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="stopwatch">
+        <div v-show="isRecording" class="stopwatch">
             <div class="time">{{ formatTime }}</div>
         </div>
     </div>
