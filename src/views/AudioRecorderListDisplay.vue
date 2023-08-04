@@ -2,7 +2,9 @@
     <div>
         <AudioRecorder :settings="settings" @audio-recorded="addAudio" />
         <AudioList :DownloadAudio="settings.DownloadAudio" :audioList="audioList" @remove-audio="removeAudio" /><br>
-        <button v-show="audioList.length > 0" class="get-output-button" @click="getOutput">
+        <button
+            :style="{ backgroundColor: settings?.startButtonBgColor || 'blue', color: settings?.startButtonTextColor || 'black' }"
+            v-show="audioList.length > 0" class="get-output-button" @click="getOutput">
             Get output
         </button>
     </div>

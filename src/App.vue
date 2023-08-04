@@ -11,12 +11,12 @@ export default {
       settings: {
         startButtonName: 'Start Button',
         startButtonBgColor: '#116197',
-        startButtonTextColor: '#000',
+        startButtonTextColor: 'white',
         stopButtonName: 'Stop Button',
         stopButtonBgColor: 'red',
         stopButtonTextColor: '#000',
         DownloadAudio: true,
-        recordingMaxLimit:1
+        recordingMaxLimit: 1
       },
       recordings: []
     }
