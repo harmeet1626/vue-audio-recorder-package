@@ -1,6 +1,6 @@
 {
   "name": "vue-audio-recorder-list",
-  "version": "0.1.33",
+  "version": "0.1.35",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -46,7 +46,7 @@
     "not ie 11"
   ],
   "description": "## Project setup ``` npm install ```",
-  "main": "./dist/vue-audio-recorder-list.common.js",
+  "main": "./index.js",
   "keywords": [
     "recorder",
     "display recording on front end",
