@@ -56,6 +56,7 @@ $ npm i --save vue-audio-recorder-list
 | `stopButtonIcon` | `String` | `Icon` | Relative path from public directory
 | `stopButtonBgColor` | `String` | `red` | Background color of button
 | `stopButtonTextColor` | `String` | `white` | Color of text
+| `recordingMaxLimit` | `Number` | `2` | Enter time in minutes to set max recording limit
 | `DownloadAudio` | `boolean` | `false` | This will enable or disable the download recording feature.
 ----
 
