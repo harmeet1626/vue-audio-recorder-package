@@ -46,7 +46,7 @@
     "not ie 11"
   ],
   "description": "## Project setup ``` npm install ```",
-  "main": "./src/index.js",
+  "main": "./dist/vue-audio-recorder-list.common.js",
   "keywords": [
     "recorder",
     "display recording on front end",
