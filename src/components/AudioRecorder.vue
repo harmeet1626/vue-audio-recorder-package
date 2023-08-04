@@ -82,8 +82,7 @@ export default {
                 return require('../assets/stopButton.png')
         },
         startRecording() {
-            this.reset()
-            this.startStop()
+
             this.chunks = [];
             navigator.mediaDevices
                 .getUserMedia({ audio: true })
@@ -104,6 +103,8 @@ export default {
                     this.mediaRecorder.start();
                     this.isRecording = true;
                     document.getElementById("error").innerHTML = ''
+                    this.reset()
+                    this.startStop()
                 })
                 .catch((error) => {
                     console.error("Error accessing the microphone:", error);
