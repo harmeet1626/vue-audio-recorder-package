@@ -52,10 +52,10 @@ export default {
             spBgColor: this.settings.stopButtonBgColor || 'red',
             sBtnIcon: this.getImgUrl(this.settings.startButtonIcon, 'start'),
             spBtnIcon: this.getImgUrl(this.settings.stopButtonIcon, 'stop'),
+            autoStopTime: this.settings.recordingMaxLimit || 2,
             isRunning: false,
             startTime: null,
             elapsedTime: 0,
-            autoStopTime: this.settings.recordingMaxLimit || 2
         };
     },
     props: ['settings'],
@@ -63,13 +63,12 @@ export default {
         formatTime() {
             const seconds = Math.floor(this.elapsedTime / 1000);
             const minutes = Math.floor(seconds / 60);
-            if (minutes == this.autoStopTime) {
+            if (minutes == this.autoStopTime || minutes == 60) {
                 this.stopRecording()
             }
             console.log(minutes)
-            const hours = Math.floor(minutes / 60);
 
-            return `${String(hours).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}.${String(this.elapsedTime % 1000).padStart(3, '0')}`;
+            return `${String(minutes % 60).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}.${String(this.elapsedTime % 1000).padStart(3, '0')}`;
         },
     },
     methods: {
