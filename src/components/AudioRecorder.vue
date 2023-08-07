@@ -66,14 +66,12 @@ export default {
             if (minutes == this.autoStopTime || minutes == 60) {
                 this.stopRecording()
             }
-            console.log(minutes)
 
-            return `${String(minutes % 60).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}.${String(this.elapsedTime % 1000).padStart(3, '0')}`;
+            return `${String(minutes % 60).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
         },
     },
     methods: {
         getImgUrl(pic, type) {
-            console.log(pic)
             if (pic) return pic;
 
             if (type == 'start')
